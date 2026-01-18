@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/profile.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ahmed Elgmmal | Professional Backend Architect</title>
+    <meta
+      name="description"
+      content="Backend Developer specialized in building scalable, secure, and high-performance server-side applications."
+    />
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div
+      id="preloader"
+      style="
+        position: fixed;
+        inset: 0;
+        background: var(--bg-dark);
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'JetBrains Mono', monospace;
+      "
+    >
+      <div
+        style="
+          font-size: 1.5rem;
+          color: var(--primary);
+          margin-bottom: 2rem;
+          letter-spacing: 4px;
+        "
+        id="loader-text"
+      >
+        INITIALIZING...
+      </div>
+      <div
+        style="
+          width: 250px;
+          height: 2px;
+          background: rgba(16, 185, 129, 0.1);
+          border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+        "
+      >
+        <div
+          id="loader-bar"
+          style="
+            position: absolute;
+            inset: 0;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.3s ease;
+          "
+        ></div>
+      </div>
+      <div
+        style="margin-top: 1rem; color: var(--text-dim); font-size: 0.8rem"
+        id="loader-percent"
+      >
+        0%
+      </div>
+    </div>
+
+    <div class="bg-blur"></div>
+    <div class="blob"></div>
+
+    <!-- Decorative Elements -->
+    <div
+      class="hero-decorative"
+      style="
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+        opacity: 0.05;
+        pointer-events: none;
+        filter: blur(80px);
+      "
+    ></div>
+
+    <nav
+      class="glass"
+      style="
+        position: fixed;
+        top: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 1000px;
+        z-index: 100;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <div
+        class="logo"
+        style="font-weight: 800; font-size: 1.25rem; letter-spacing: -1px"
+      >
+        AHMED<span style="color: var(--primary)">.DEV</span>
+      </div>
+      <div
+        class="nav-links"
+        style="
+          display: flex;
+          gap: 2rem;
+          font-weight: 500;
+          font-size: 0.9rem;
+          align-items: center;
+        "
+      >
+        <a href="#about" style="color: var(--text-main); text-decoration: none"
+          >About</a
+        >
+        <a
+          href="#services"
+          style="color: var(--text-main); text-decoration: none"
+          >Services</a
+        >
+        <a
+          href="#projects"
+          style="color: var(--text-main); text-decoration: none"
+          >Projects</a
+        >
+        <div
+          id="language-switcher"
+          style="
+            cursor: pointer;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glow);
+            font-family: 'JetBrains Mono';
+          "
+          onclick="toggleLanguage()"
+        >
+          EN/AR
+        </div>
+        <a href="#contact" class="btn-primary" style="padding: 0.5rem 1rem"
+          >Let's Talk</a
+        >
+      </div>
+    </nav>
+
+    <main class="container">
+      <!-- Hero Section -->
+      <section
+        id="hero"
+        style="
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6rem;
+          padding-top: 100px;
+          position: relative;
+        "
+      >
+        <div class="hero-content" style="flex: 1.2; z-index: 2">
+          <div
+            data-aos="fade-down"
+            style="
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              margin-bottom: 1.5rem;
+            "
+          >
+            <div
+              style="width: 40px; height: 2px; background: var(--primary)"
+            ></div>
+            <h2
+              style="
+                color: var(--primary);
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 3px;
+              "
+            >
+              Available for Hire
+            </h2>
+          </div>
+          <h1
+            style="
+              font-size: 5rem;
+              line-height: 1;
+              font-weight: 900;
+              margin-bottom: 2rem;
+              min-height: 150px;
+              letter-spacing: -2px;
+            "
+            class="gradient-text"
+          >
+            <span id="typewriter"></span>
+          </h1>
+          <p
+            style="
+              font-size: 1.25rem;
+              color: var(--text-dim);
+              margin-bottom: 3rem;
+              max-width: 650px;
+              line-height: 1.6;
+            "
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            I am
+            <strong style="color: var(--text-main)"
+              >Ahmed Mohamed Ragab El-Gammal</strong
+            >, a dedicated Software Developer at HTI Beni Suef. Crafting
+            high-performance, secure, and scalable
+            <strong style="color: var(--primary)">Backend Architectures</strong>
+            with Laravel & MySQL.
+          </p>
+          <div
+            style="display: flex; gap: 2rem; align-items: center"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <a
+              href="#projects"
+              class="btn-primary"
+              style="
+                padding: 1rem 2.5rem;
+                font-size: 1.1rem;
+                border-radius: 100px;
+              "
+              >Explore Projects</a
+            >
+            <a
+              href="/assets/Ahmed_Mohamed_Ragab_CV.pdf"
+              target="_blank"
+              style="
+                color: var(--text-main);
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-weight: 600;
+                font-size: 1rem;
+                transition: var(--transition);
+              "
+              onmouseover="this.style.color='var(--primary)'"
+              onmouseout="this.style.color='var(--text-main)'"
+            >
+              <span>Download CV</span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="hero-image"
+          style="flex: 1; position: relative; z-index: 1"
+          data-aos="zoom-in"
+          data-aos-duration="1500"
+        >
+          <!-- Abstract Background Shape -->
+          <div
+            style="
+              position: absolute;
+              top: -10%;
+              right: -10%;
+              width: 120%;
+              height: 120%;
+              background: var(--bg-darker);
+              border-radius: 3rem;
+              transform: rotate(5deg);
+              z-index: -1;
+            "
+          ></div>
+
+          <div
+            class="glass"
+            style="
+              padding: 1rem;
+              border-radius: 3rem;
+              overflow: hidden;
+              box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(16, 185, 129, 0.1);
+              transition: var(--transition);
+              border: 1px solid rgba(16, 185, 129, 0.2);
+            "
+            onmouseover="this.style.transform='translateY(-10px) rotate(0deg)'; this.style.borderColor='var(--primary)'"
+            onmouseout="this.style.transform='translateY(0) rotate(0deg)'; this.style.borderColor='rgba(16, 185, 129, 0.2)'"
+          >
+            <img
+              src="/assets/profile.png"
+              alt="Ahmed Elgmmal"
+              style="
+                width: 100%;
+                height: auto;
+                border-radius: 2.5rem;
+                display: block;
+                object-fit: cover;
+              "
+            />
+          </div>
+
+          <!-- Floating Badge -->
+          <div
+            class="glass"
+            style="
+              position: absolute;
+              bottom: 5%;
+              left: -10%;
+              padding: 1.5rem;
+              border-radius: 1.5rem;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              animation: float 6s ease-in-out infinite;
+            "
+          >
+            <div
+              style="
+                width: 12px;
+                height: 12px;
+                background: var(--primary);
+                border-radius: 50%;
+                box-shadow: 0 0 15px var(--primary);
+              "
+            ></div>
+            <div
+              style="
+                font-family: 'JetBrains Mono';
+                font-size: 0.8rem;
+                font-weight: 800;
+              "
+            >
+              LARAVEL ARCHITECT
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" data-aos="fade-right">
+        <div
+          class="glass"
+          style="
+            padding: 4rem;
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(
+              135deg,
+              var(--surface) 0%,
+              var(--bg-darker) 100%
+            );
+          "
+        >
+          <div style="flex: 1">
+            <h2 style="font-size: 2.5rem; margin-bottom: 2rem">
+              Discovering <span class="gradient-text">My Journey</span>
+            </h2>
+            <p
+              style="
+                font-size: 1.1rem;
+                color: var(--text-dim);
+                margin-bottom: 1.5rem;
+                line-height: 1.8;
+              "
+            >
+              Hello! I am <strong>Ahmed Mohamed Ragab El-Gammal</strong>, a
+              passionate Software Developer studying at the
+              <strong>Higher Technological Institute (HTI) in Beni Suef</strong
+              >. My deep interest in Backend engineering motivates me to
+              construct robust and scalable server-side architectures.
+            </p>
+            <p
+              style="
+                font-size: 1.1rem;
+                color: var(--text-dim);
+                margin-bottom: 2rem;
+                line-height: 1.8;
+              "
+            >
+              I believe software is more than just lines of code—it's about
+              creating intelligent solutions that improve lives. I am dedicated
+              to delivering high-quality database design and
+              performance-optimized APIs with a strong focus on security.
+            </p>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1.5rem;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <span style="color: var(--primary)">✔</span>
+                <span>Backend Architect</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <span style="color: var(--primary)">✔</span>
+                <span>HTI Beni Suef Student</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <span style="color: var(--primary)">✔</span>
+                <span>Laravel Specialist</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <span style="color: var(--primary)">✔</span>
+                <span>Frontend: HTML, CSS, jQuery, Bootstrap</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <span style="color: var(--primary)">✔</span>
+                <span>Server Deployment: Free & Paid Hosting</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.75rem">
+                <span style="color: var(--primary)">✔</span>
+                <span>Clean Code Advocate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section id="services" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
+          Elite <span class="gradient-text">Solutions</span>
+        </h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <div
+            class="glass"
+            style="padding: 2.5rem; transition: var(--transition)"
+          >
+            <div style="font-size: 2.5rem; margin-bottom: 1.5rem">🏗️</div>
+            <h4 style="font-size: 1.5rem; margin-bottom: 1rem">
+              Core Backend Architecture
+            </h4>
+            <p style="color: var(--text-dim)">
+              Designing powerful, high-load systems using Laravel. Focus on
+              performance, scalability, and maintainable codebases.
+            </p>
+          </div>
+          <div
+            class="glass"
+            style="padding: 2.5rem; transition: var(--transition)"
+          >
+            <div style="font-size: 2.5rem; margin-bottom: 1.5rem">🔌</div>
+            <h4 style="font-size: 1.5rem; margin-bottom: 1rem">
+              RESTful API Development
+            </h4>
+            <p style="color: var(--text-dim)">
+              Building secure and well-documented APIs (OpenAPI/Swagger) for
+              seamless frontend or mobile integrations.
+            </p>
+          </div>
+          <div
+            class="glass"
+            style="padding: 2.5rem; transition: var(--transition)"
+          >
+            <div style="font-size: 2.5rem; margin-bottom: 1.5rem">🗄️</div>
+            <h4 style="font-size: 1.5rem; margin-bottom: 1rem">
+              Database Consulting
+            </h4>
+            <p style="color: var(--text-dim)">
+              Expert MySQL schema design, query optimization, and complex data
+              modeling for business efficiency.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats/Tech Section -->
+      <section id="skills" data-aos="zoom-in">
+        <div
+          class="glass"
+          style="
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+          "
+        >
+          <div>
+            <h3
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary)"
+            >
+              Laravel
+            </h3>
+            <p style="color: var(--text-dim)">Primary Framework</p>
+          </div>
+          <div>
+            <h3
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary)"
+            >
+              MySQL
+            </h3>
+            <p style="color: var(--text-dim)">Database Architect</p>
+          </div>
+          <div>
+            <h3
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary)"
+            >
+              50+
+            </h3>
+            <p style="color: var(--text-dim)">APIs Built</p>
+          </div>
+          <div>
+            <h3
+              style="font-size: 2.5rem; font-weight: 800; color: var(--primary)"
+            >
+              Secure
+            </h3>
+            <p style="color: var(--text-dim)">JWT & OAuth2</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
+          Featured <span class="gradient-text">Productions</span>
+        </h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <!-- Project Card 1: Sanaiey -->
+          <div
+            class="glass"
+            style="
+              padding: 1.5rem;
+              transition: var(--transition);
+              cursor: pointer;
+            "
+            onmouseover="this.style.borderColor='var(--primary)'"
+            onmouseout="this.style.borderColor='var(--border-glow)'"
+          >
+            <div
+              style="
+                background: var(--bg-darker);
+                height: 200px;
+                border-radius: 0.75rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'JetBrains Mono';
+                color: var(--primary);
+                font-size: 0.9rem;
+                text-align: center;
+                padding: 1rem;
+              "
+            >
+              [ SANAIEY.COM ] <br />
+              SMART SERVICE PLATFORM
+            </div>
+            <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem">
+              Sanaiey (صنايعي دوت كوم)
+            </h4>
+            <p
+              style="
+                color: var(--text-dim);
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+              "
+            >
+              A comprehensive platform connecting clients with skilled
+              technicians. Developed with advanced search filters, booking
+              systems, and real-time status tracking.
+            </p>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap">
+              <span
+                style="
+                  background: rgba(16, 185, 129, 0.1);
+                  color: var(--primary);
+                  padding: 0.2rem 0.6rem;
+                  border-radius: 2rem;
+                  font-size: 0.8rem;
+                "
+                >Laravel</span
+              >
+              <span
+                style="
+                  background: rgba(16, 185, 129, 0.1);
+                  color: var(--primary);
+                  padding: 0.2rem 0.6rem;
+                  border-radius: 2rem;
+                  font-size: 0.8rem;
+                "
+                >MySQL</span
+              >
+              <span
+                style="
+                  background: rgba(16, 185, 129, 0.1);
+                  color: var(--primary);
+                  padding: 0.2rem 0.6rem;
+                  border-radius: 2rem;
+                  font-size: 0.8rem;
+                "
+                >Livewire</span
+              >
+            </div>
+          </div>
+          <!-- Project Card 2: Elgmmal Fashion -->
+          <div
+            class="glass"
+            style="
+              padding: 1.5rem;
+              transition: var(--transition);
+              cursor: pointer;
+            "
+            onclick="window.open('https://elgfashion.kesug.com/?i=1', '_blank')"
+            onmouseover="this.style.borderColor='var(--primary)'"
+            onmouseout="this.style.borderColor='var(--border-glow)'"
+          >
+            <div
+              style="
+                background: var(--bg-darker);
+                height: 200px;
+                border-radius: 0.75rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'JetBrains Mono';
+                color: var(--primary);
+                font-size: 0.9rem;
+                text-align: center;
+                padding: 1rem;
+              "
+            >
+              [ ELGMAL FASHION ] <br />
+              E-COMMERCE HUB
+            </div>
+            <h4 style="font-size: 1.25rem; margin-bottom: 0.5rem">
+              Elgmmal Fashion
+            </h4>
+            <p
+              style="
+                color: var(--text-dim);
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Dynamic e-commerce solution for fashion retail. Features
+              multi-category support, inventory management, and a streamlined
+              checkout experience.
+            </p>
+            <div
+              style="
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                margin-bottom: 1rem;
+              "
+            >
+              <span
+                style="
+                  background: rgba(16, 185, 129, 0.1);
+                  color: var(--primary);
+                  padding: 0.2rem 0.6rem;
+                  border-radius: 2rem;
+                  font-size: 0.8rem;
+                "
+                >PHP</span
+              >
+              <span
+                style="
+                  background: rgba(16, 185, 129, 0.1);
+                  color: var(--primary);
+                  padding: 0.2rem 0.6rem;
+                  border-radius: 2rem;
+                  font-size: 0.8rem;
+                "
+                >MySQL</span
+              >
+              <span
+                style="
+                  background: rgba(16, 185, 129, 0.1);
+                  color: var(--primary);
+                  padding: 0.2rem 0.6rem;
+                  border-radius: 2rem;
+                  font-size: 0.8rem;
+                "
+                >UI/UX</span
+              >
+            </div>
+            <a
+              href="https://elgfashion.kesug.com/?i=1"
+              target="_blank"
+              style="
+                color: var(--primary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                font-weight: 600;
+              "
+              >Visit Website ↗</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates Section -->
+      <section id="certificates" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
+          Verified <span class="gradient-text">Excellence</span>
+        </h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <div
+            class="glass"
+            style="padding: 1rem; cursor: pointer; overflow: hidden"
+            onclick="window.open('/assets/laravel_cert.png', '_blank')"
+          >
+            <img
+              src="/assets/laravel_cert.png"
+              alt="Laravel Certificate"
+              style="
+                width: 100%;
+                border-radius: 1rem;
+                transition: var(--transition);
+              "
+              onmouseover="this.style.transform='scale(1.05)'"
+              onmouseout="this.style.transform='scale(1)'"
+            />
+            <div style="padding: 1.5rem 1rem 0.5rem">
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem">
+                Professional Laravel Developer
+              </h4>
+              <p style="color: var(--text-dim); font-size: 0.9rem">
+                Expert level certification in Laravel framework and ecosystem.
+              </p>
+            </div>
+          </div>
+          <div
+            class="glass"
+            style="padding: 1rem; cursor: pointer; overflow: hidden"
+            onclick="window.open('/assets/backend_cert.png', '_blank')"
+          >
+            <img
+              src="/assets/backend_cert.png"
+              alt="Backend Architecture Certificate"
+              style="
+                width: 100%;
+                border-radius: 1rem;
+                transition: var(--transition);
+              "
+              onmouseover="this.style.transform='scale(1.05)'"
+              onmouseout="this.style.transform='scale(1)'"
+            />
+            <div style="padding: 1.5rem 1rem 0.5rem">
+              <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem">
+                Backend Architecture Specialist
+              </h4>
+              <p style="color: var(--text-dim); font-size: 0.9rem">
+                Validation of advanced system design and architectural patterns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery/Identity Section -->
+      <section id="identity" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
+          Professional <span class="gradient-text">Identity</span>
+        </h2>
+        <div class="bento-grid">
+          <!-- Item 1: Big Focus -->
+          <div class="bento-item bento-big" data-aos="fade-up">
+            <img src="/assets/personal_1.jpg" alt="Identity 1" />
+            <div class="bento-overlay">
+              <h4>Visionary Architect</h4>
+              <p>Strategizing scalable backend solutions.</p>
+            </div>
+          </div>
+          <!-- Item 2: Tall -->
+          <div
+            class="bento-item bento-tall"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <img src="/assets/personal_2.jpg" alt="Identity 2" />
+            <div class="bento-overlay">
+              <h4>Deep Focus</h4>
+              <p>Engineering complex database schemas.</p>
+            </div>
+          </div>
+          <!-- Item 3: Wide -->
+          <div
+            class="bento-item bento-wide"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <img src="/assets/personal_3.jpg" alt="Identity 3" />
+            <div class="bento-overlay">
+              <h4>Collaborative Spirit</h4>
+              <p>Working on meaningful digital products.</p>
+            </div>
+          </div>
+          <!-- Item 4: Small -->
+          <div class="bento-item" data-aos="fade-up" data-aos-delay="300">
+            <img src="/assets/personal_4.jpg" alt="Identity 4" />
+            <div class="bento-overlay">
+              <h4>Precision</h4>
+              <p>Clean code & high performance.</p>
+            </div>
+          </div>
+          <!-- Item 5: Small -->
+          <div class="bento-item" data-aos="fade-up" data-aos-delay="400">
+            <img src="/assets/personal_5.jpg" alt="Identity 5" />
+            <div class="bento-overlay">
+              <h4>Innovation</h4>
+              <p>Staying ahead with latest tech.</p>
+            </div>
+          </div>
+          <!-- Item 6: Wide -->
+          <div
+            class="bento-item bento-wide"
+            data-aos="fade-up"
+            data-aos-delay="500"
+          >
+            <img src="/assets/personal_6.jpg" alt="Identity 6" />
+            <div class="bento-overlay">
+              <h4>The Future</h4>
+              <p>Building the next generation of web apps.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
+          Professional <span class="gradient-text">Experience</span>
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: 2rem">
+          <div class="glass" style="padding: 2.5rem; display: flex; gap: 2rem">
+            <div
+              style="
+                color: var(--primary);
+                font-weight: 800;
+                border-right: 2px solid var(--primary);
+                padding-right: 2rem;
+                min-width: 150px;
+              "
+            >
+              2023 - Present
+            </div>
+            <div>
+              <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem">
+                Freelance Backend Developer
+              </h4>
+              <p style="color: var(--text-dim); margin-bottom: 1rem">
+                Building robust server-side applications for diverse clients,
+                focusing on architectural efficiency and security.
+              </p>
+              <ul
+                style="
+                  color: var(--text-dim);
+                  padding-left: 1.2rem;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 0.5rem;
+                "
+              >
+                <li>• API Implementation</li>
+                <li>• Database Design</li>
+                <li>• System Integration</li>
+                <li>• Security Audits</li>
+              </ul>
+            </div>
+          </div>
+          <div class="glass" style="padding: 2.5rem; display: flex; gap: 2rem">
+            <div
+              style="
+                color: var(--primary);
+                font-weight: 800;
+                border-right: 2px solid var(--primary);
+                padding-right: 2rem;
+                min-width: 150px;
+              "
+            >
+              Academic
+            </div>
+            <div>
+              <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem">
+                Software Engineering Student
+              </h4>
+              <p style="color: var(--text-dim)">
+                HTI Beni Suef - Strengthening foundational knowledge in
+                algorithms, data structures, and software engineering
+                principles.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section id="testimonials" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
+          Partner <span class="gradient-text">Voices</span>
+        </h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+          "
+        >
+          <div class="glass" style="padding: 2.5rem; position: relative">
+            <div
+              style="
+                color: var(--primary);
+                font-size: 3rem;
+                position: absolute;
+                top: 1rem;
+                right: 2rem;
+                opacity: 0.2;
+              "
+            >
+              ”
+            </div>
+            <p
+              style="
+                color: var(--text-dim);
+                font-style: italic;
+                margin-bottom: 1.5rem;
+              "
+            >
+              "Ahmed delivered our backend infrastructure ahead of schedule. His
+              attention to database optimization significantly reduced our
+              server costs."
+            </p>
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background: var(--bg-darker);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-weight: 800;
+                  color: var(--primary);
+                "
+              >
+                JD
+              </div>
+              <div>
+                <h5 style="font-size: 1rem">John Doe</h5>
+                <p style="font-size: 0.8rem; color: var(--text-dim)">
+                  CTO, TechFlow
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="glass" style="padding: 2.5rem; position: relative">
+            <div
+              style="
+                color: var(--primary);
+                font-size: 3rem;
+                position: absolute;
+                top: 1rem;
+                right: 2rem;
+                opacity: 0.2;
+              "
+            >
+              ”
+            </div>
+            <p
+              style="
+                color: var(--text-dim);
+                font-style: italic;
+                margin-bottom: 1.5rem;
+              "
+            >
+              "The cleanest Laravel code I've seen in a long time. Clear
+              documentation and perfect API structure. Highly recommended!"
+            </p>
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background: var(--bg-darker);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-weight: 800;
+                  color: var(--primary);
+                "
+              >
+                SA
+              </div>
+              <div>
+                <h5 style="font-size: 1rem">Sarah Ahmed</h5>
+                <p style="font-size: 0.8rem; color: var(--text-dim)">
+                  Project Manager, Elgmmal Fashion
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA & Contact Form Section -->
+      <section id="contact" data-aos="zoom-in">
+        <div
+          class="glass"
+          style="
+            padding: 4rem 2rem;
+            background: linear-gradient(
+              to bottom right,
+              var(--surface),
+              var(--bg-darker)
+            );
+          "
+        >
+          <div
+            style="
+              max-width: 800px;
+              margin: 0 auto;
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              gap: 4rem;
+              text-align: left;
+            "
+          >
+            <div>
+              <h2 style="font-size: 3rem; margin-bottom: 1.5rem">
+                Ready to <span class="gradient-text">Level Up</span>?
+              </h2>
+              <p
+                style="
+                  color: var(--text-dim);
+                  margin-bottom: 2.5rem;
+                  font-size: 1.1rem;
+                  line-height: 1.6;
+                "
+              >
+                Currently available for freelance projects and full-time
+                opportunities. Let's build something extraordinary together.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 1.5rem">
+                <a
+                  href="mailto:eng.ahmed.mohamed3050@gmail.com"
+                  style="
+                    color: var(--text-main);
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                  "
+                >
+                  <span style="color: var(--primary)">📧</span>
+                  eng.ahmed.mohamed3050@gmail.com
+                </a>
+                <a
+                  href="https://wa.me/201275543298"
+                  target="_blank"
+                  style="
+                    color: var(--text-main);
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                  "
+                >
+                  <span style="color: var(--primary)">📱</span> +20 127 554 3298
+                </a>
+              </div>
+            </div>
+            <div>
+              <!-- EmailJS Integrated -->
+              <form
+                id="contact-form"
+                style="display: flex; flex-direction: column; gap: 1rem"
+              >
+                <input type="hidden" name="time" id="form-time" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid var(--border-glow);
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    color: #fff;
+                    font-family: inherit;
+                  "
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid var(--border-glow);
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    color: #fff;
+                    font-family: inherit;
+                  "
+                />
+                <textarea
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  rows="4"
+                  required
+                  style="
+                    background: rgba(255, 255, 255, 0.05);
+                    border: 1px solid var(--border-glow);
+                    padding: 1rem;
+                    border-radius: 0.5rem;
+                    color: #fff;
+                    font-family: inherit;
+                    resize: vertical;
+                  "
+                ></textarea>
+                <button
+                  type="submit"
+                  class="btn-primary"
+                  style="justify-content: center; padding: 1rem"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      style="
+        padding: 3rem 0;
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.9rem;
+      "
+    >
+      <p>© 2026 Ahmed Elgmmal. Handcrafted with passion and precision.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Widget -->
+    <div class="wa-widget" id="wa-widget">
+      <div class="wa-window" id="wa-window">
+        <div class="wa-header">
+          <div class="status"></div>
+          <div>
+            <div style="font-weight: 700">Ahmed Elgmmal</div>
+            <div style="font-size: 0.75rem; opacity: 0.8">Online</div>
+          </div>
+        </div>
+        <div class="wa-body">
+          <div class="wa-msg">
+            Hi! Please provide your details and I'll get back to you
+            immediately. 👋
+          </div>
+          <input
+            type="text"
+            class="wa-input"
+            id="wa-name-input"
+            placeholder="Your Name"
+            style="margin-bottom: 0.8rem"
+          />
+          <input
+            type="text"
+            class="wa-input"
+            id="wa-phone-input"
+            placeholder="Your Phone (WhatsApp)"
+            style="margin-bottom: 0.8rem"
+          />
+          <textarea
+            class="wa-input"
+            id="wa-msg-input"
+            placeholder="How can I help you?"
+            rows="2"
+          ></textarea>
+          <button
+            class="btn-primary"
+            style="
+              width: 100%;
+              justify-content: center;
+              background: #25d366;
+              color: white;
+            "
+            onclick="sendWAMessage()"
+          >
+            Send Message
+          </button>
+        </div>
+      </div>
+      <div class="wa-bubble" onclick="toggleWAWindow()">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M12.031 6.172c-2.32 0-4.518.892-6.193 2.512-3.418 3.3-3.418 8.651 0 11.951 1.543 1.488 3.551 2.307 5.655 2.307.21 0 .42-.008.625-.025.07.032.16.075.257.126.69.362 1.83.921 2.924 1.258.11.033.22.065.33.097a.123.123 0 0 0 .153-.105l.005-.015a.434.434 0 0 0-.012-.224l-.11-.476c-.173-.778-.346-1.556-.475-2.071l-.031-.124c.022-.01.044-.021.065-.032 1.583-.819 2.859-2.016 3.69-3.461 1.348-2.344 1.348-5.187 0-7.531-1.047-1.815-2.693-3.235-4.636-3.996s-4.048-.795-5.947-.097c-.1-.035-.205-.062-.314-.084-.336-.067-.68-.1-.131-.1-.005 0-.005.006.012.012-.03-.008-.073-.016-.118-.026zm-.031 1.031c2.035 0 3.963.782 5.431 2.201 3.012 2.9 3.012 7.619 0 10.518-1.353 1.306-3.116 2.025-4.965 2.025-.184 0-.368-.007-.55-.022l-.116-.01-.082.031c-.13.048-.266.096-.407.142l-.125.041.033.125c.105.394.249.994.406 1.742l.102.485c-.941-.26-1.872-.738-2.541-1.082l-.112-.058-.125.011c-.354.03-.71.045-1.066.045-1.849 0-3.612-.719-4.966-2.025-3.012-2.899-3.012-7.618 0-10.518 1.468-1.419 3.396-2.201 5.431-2.201z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+    </script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
