@@ -47,6 +47,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 80);
 
+    // 1.1 Mobile Menu Logic
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const navLinks = document.getElementById('nav-links');
+    
+    if (mobileToggle && navLinks) {
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Optional: Animate hamburger to X
+            const lines = mobileToggle.querySelectorAll('line');
+            if (navLinks.classList.contains('active')) {
+                lines[0].setAttribute('x1', '18'); lines[0].setAttribute('y1', '6'); lines[0].setAttribute('x2', '6'); lines[0].setAttribute('y2', '18');
+                lines[1].style.opacity = '0';
+                lines[2].setAttribute('x1', '6'); lines[2].setAttribute('y1', '6'); lines[2].setAttribute('x2', '18'); lines[2].setAttribute('y2', '18');
+            } else {
+                lines[0].setAttribute('x1', '3'); lines[0].setAttribute('y1', '6'); lines[0].setAttribute('x2', '21'); lines[0].setAttribute('y2', '6');
+                lines[1].style.opacity = '1';
+                lines[2].setAttribute('x1', '3'); lines[2].setAttribute('y1', '18'); lines[2].setAttribute('x2', '21'); lines[2].setAttribute('y2', '18');
+            }
+        });
+
+        // Close menu when clicking links
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const lines = mobileToggle.querySelectorAll('line');
+                lines[0].setAttribute('x1', '3'); lines[0].setAttribute('y1', '6'); lines[0].setAttribute('x2', '21'); lines[0].setAttribute('y2', '6');
+                lines[1].style.opacity = '1';
+                lines[2].setAttribute('x1', '3'); lines[2].setAttribute('y1', '18'); lines[2].setAttribute('x2', '21'); lines[2].setAttribute('y2', '18');
+            });
+        });
+    }
+
     // 2. Typewriter Effect
     const textElement = document.getElementById('typewriter');
     const texts = ["Ahmed Elgmmal.", "Backend Architect.", "Laravel Expert.", "API Specialist."];
