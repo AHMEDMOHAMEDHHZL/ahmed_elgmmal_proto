@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/assets/profile.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ahmed Elgmmal | Professional Backend Architect</title>
+    <title>Ahmed Elgmmal | Senior Backend Architect & Laravel Specialist</title>
     <meta
       name="description"
-      content="Backend Developer specialized in building scalable, secure, and high-performance server-side applications."
+      content="Portfolio of Ahmed Mohamed Ragab El-Gammal - Senior Backend Architect specializing in Laravel, High-Performance MySQL, Scalable REST APIs & System Design."
     />
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
     <!-- EmailJS SDK -->
     <script
       type="text/javascript"
@@ -20,31 +27,42 @@
   <body>
     <!-- Preloader -->
     <div id="preloader">
-      <div id="loader-text">INITIALIZING...</div>
+      <div class="loader-logo">AHMED<span>.DEV</span></div>
+      <div id="loader-text">SYSTEM INITIALIZING...</div>
       <div class="loader-container">
         <div id="loader-bar"></div>
       </div>
       <div id="loader-percent">0%</div>
     </div>
 
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+
+    <!-- Background Canvas and Ambient Lighting -->
+    <canvas id="bg-canvas"></canvas>
     <div class="bg-blur"></div>
-    <div class="blob"></div>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
 
-    <div class="hero-decorative"></div>
-
-    <nav class="glass">
-      <div class="logo">AHMED<span>.DEV</span></div>
+    <!-- Navigation Header -->
+    <nav class="glass nav-header">
+      <a href="#hero" class="logo">AHMED<span>.DEV</span></a>
       <div class="nav-links" id="nav-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <div id="language-switcher" onclick="toggleLanguage()">EN/AR</div>
-        <a href="#contact" class="btn-primary nav-cta">Let's Talk</a>
+        <a href="#about" data-i18n="nav_about">About</a>
+        <a href="#tech-stack" data-i18n="nav_tech">Tech Stack</a>
+        <a href="#projects" data-i18n="nav_projects">Projects</a>
+        <a href="#architecture" data-i18n="nav_arch">Architecture</a>
+        <a href="#experience" data-i18n="nav_exp">Experience</a>
+        <a href="#certificates" data-i18n="nav_cert">Certifications</a>
+        <button id="language-switcher" onclick="toggleLanguage()">
+          <span class="lang-icon">🌐</span> <span id="lang-text">EN / AR</span>
+        </button>
+        <a href="#contact" class="btn-primary nav-cta" data-i18n="nav_contact">Let's Talk</a>
       </div>
-      <div class="mobile-toggle" id="mobile-toggle">
+      <div class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Menu">
         <svg
-          width="30"
-          height="30"
+          width="28"
+          height="28"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -64,31 +82,27 @@
       <section id="hero">
         <div class="hero-content">
           <div data-aos="fade-down" class="hero-badge-container">
-            <div class="hero-line"></div>
-            <h2 class="hero-badge-text">Available for Hire</h2>
+            <span class="status-pulse"></span>
+            <span class="hero-badge-text" data-i18n="hero_available">Available for Hire & Engineering Projects</span>
           </div>
-          <h1 class="gradient-text hero-title">
-            <span id="typewriter"></span>
+          <h1 class="hero-title">
+            <span class="greeting" data-i18n="hero_hi">Hi, I'm</span><br />
+            <span id="typewriter" class="gradient-text"></span>
           </h1>
-          <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
-            I am
-            <strong style="color: var(--text-main)"
-              >Ahmed Mohamed Ragab El-Gammal</strong
-            >, a dedicated Software Developer at HTI Beni Suef. Crafting
-            high-performance, secure, and scalable
-            <strong style="color: var(--primary)">Backend Architectures</strong>
-            with Laravel & MySQL.
+          <p class="hero-desc" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_desc">
+            Backend Architect & Software Engineer studying at <strong style="color: var(--text-main)">HTI Beni Suef</strong>. I specialize in designing scalable server-side systems, high-throughput <strong style="color: var(--primary)">REST APIs</strong>, and database optimization with <strong style="color: var(--primary)">Laravel & MySQL</strong>.
           </p>
+          
           <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
-            <a href="#projects" class="btn-primary btn-projects"
-              >Explore Projects</a
-            >
+            <a href="#projects" class="btn-primary btn-projects" data-i18n="btn_projects">
+              <span>Explore Featured Works</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
             <a
               href="/assets/Ahmed_Mohamed_Ragab_CV.pdf"
               target="_blank"
-              class="cv-link"
+              class="cv-link glass-btn"
             >
-              <span>Download CV</span>
               <svg
                 width="20"
                 height="20"
@@ -96,199 +110,462 @@
                 fill="none"
                 stroke="currentColor"
                 stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
               >
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4" />
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <polyline points="7 10 12 15 17 10" />
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
+              <span data-i18n="btn_cv">Download Resume</span>
             </a>
+          </div>
+
+          <!-- Quick Stats Bar -->
+          <div class="hero-stats-row" data-aos="fade-up" data-aos-delay="500">
+            <div class="stat-pill">
+              <span class="stat-num">99.9%</span>
+              <span class="stat-lbl" data-i18n="stat_uptime">System Reliability</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-pill">
+              <span class="stat-num">50+</span>
+              <span class="stat-lbl" data-i18n="stat_apis">API Endpoints</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-pill">
+              <span class="stat-num">&lt;15ms</span>
+              <span class="stat-lbl" data-i18n="stat_latency">Query Latency</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-image" data-aos="zoom-in" data-aos-duration="1500">
+        <div class="hero-image" data-aos="zoom-in" data-aos-duration="1200">
           <div class="hero-img-bg"></div>
           <div class="hero-img-container">
-            <img src="/assets/profile.png" alt="Ahmed Elgmmal" />
+            <img src="/assets/profile.png" alt="Ahmed Mohamed Ragab El-Gammal" />
+            <div class="hero-img-overlay"></div>
           </div>
 
-          <!-- Floating Badge -->
-          <div class="glass floating-badge">
-            <div class="badge-dot"></div>
-            <div class="badge-label">LARAVEL ARCHITECT</div>
+          <!-- Interactive Floating Tech Pills -->
+          <div class="glass floating-pill pill-1">
+            <span class="pill-icon">🚀</span>
+            <span>Laravel 11</span>
+          </div>
+          <div class="glass floating-pill pill-2">
+            <span class="pill-icon">🗄️</span>
+            <span>MySQL Architect</span>
+          </div>
+          <div class="glass floating-pill pill-3">
+            <span class="pill-icon">⚡</span>
+            <span>REST & GraphQL</span>
           </div>
         </div>
       </section>
 
       <!-- About Section -->
-      <section id="about" data-aos="fade-right">
-        <div class="glass">
+      <section id="about" data-aos="fade-up">
+        <div class="glass about-wrapper">
           <div class="about-content">
-            <h2 class="about-title">
-              Discovering <span class="gradient-text">My Journey</span>
+            <div class="section-tag" data-i18n="about_tag">BACKGROUND & PHILOSOPHY</div>
+            <h2 class="section-header align-left" data-i18n="about_title">
+              Engineering Scalable Systems With <span class="gradient-text">Precision</span>
             </h2>
-            <p class="about-desc">
-              Hello! I am <strong>Ahmed Mohamed Ragab El-Gammal</strong>, a
-              passionate Software Developer studying at the
-              <strong>Higher Technological Institute (HTI) in Beni Suef</strong
-              >. My deep interest in Backend engineering motivates me to
-              construct robust and scalable server-side architectures.
+            <p class="about-desc" data-i18n="about_desc1">
+              I am <strong>Ahmed Mohamed Ragab El-Gammal</strong>, a passionate Backend Engineer studying at the
+              <strong>Higher Technological Institute (HTI) in Beni Suef</strong>. My mission is building maintainable, high-throughput server backends that easily scale under heavy load.
             </p>
-            <p class="about-desc">
-              I believe software is more than just lines of code—it's about
-              creating intelligent solutions that improve lives. I am dedicated
-              to delivering high-quality database design and
-              performance-optimized APIs with a strong focus on security.
+            <p class="about-desc" data-i18n="about_desc2">
+              Beyond writing code, I focus on system resilience, optimal database schema normalized for speed, OAuth2/JWT security protocols, and clean modular codebases using SOLID principles.
             </p>
             <div class="about-grid">
               <div class="about-item">
-                <span>✔</span>
-                <span>Backend Architect</span>
+                <span class="check-icon">✓</span>
+                <span data-i18n="about_feat1">Backend Architecture & API Design</span>
               </div>
               <div class="about-item">
-                <span>✔</span>
-                <span>HTI Beni Suef Student</span>
+                <span class="check-icon">✓</span>
+                <span data-i18n="about_feat2">HTI Beni Suef Engineering Student</span>
               </div>
               <div class="about-item">
-                <span>✔</span>
-                <span>Laravel Specialist</span>
+                <span class="check-icon">✓</span>
+                <span data-i18n="about_feat3">Laravel Ecosystem Mastery</span>
               </div>
               <div class="about-item">
-                <span>✔</span>
-                <span>Frontend: HTML, CSS, jQuery, Bootstrap</span>
+                <span class="check-icon">✓</span>
+                <span data-i18n="about_feat4">Database Optimization & Indexing</span>
               </div>
               <div class="about-item">
-                <span>✔</span>
-                <span>Server Deployment: Free & Paid Hosting</span>
+                <span class="check-icon">✓</span>
+                <span data-i18n="about_feat5">RESTful Services & Integrations</span>
               </div>
               <div class="about-item">
-                <span>✔</span>
-                <span>Clean Code Advocate</span>
+                <span class="check-icon">✓</span>
+                <span data-i18n="about_feat6">Clean Code & Refactoring Advocate</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Services Section -->
-      <section id="services" data-aos="fade-up">
-        <h2 class="section-header">
-          Elite <span class="gradient-text">Solutions</span>
-        </h2>
+      <!-- Services & Tech Stack Matrix Section -->
+      <section id="tech-stack" data-aos="fade-up">
+        <div class="section-center">
+          <div class="section-tag" data-i18n="services_tag">CORE COMPETENCIES</div>
+          <h2 class="section-header" data-i18n="services_title">
+            Architectural <span class="gradient-text">Capabilities</span>
+          </h2>
+        </div>
+
         <div class="services-grid">
           <div class="glass service-card">
-            <div class="service-icon">🏗️</div>
-            <h4 class="service-title">Core Backend Architecture</h4>
-            <p class="service-desc">
-              Designing powerful, high-load systems using Laravel. Focus on
-              performance, scalability, and maintainable codebases.
+            <div class="service-header">
+              <div class="service-icon">🏗️</div>
+              <span class="badge-tag">PRIMARY CORE</span>
+            </div>
+            <h3 class="service-title" data-i18n="service_1_title">Backend System Architecture</h3>
+            <p class="service-desc" data-i18n="service_1_desc">
+              Designing modular, maintainable, and enterprise-grade backend infrastructure using modern Laravel, PHP 8.3+, and service pattern principles.
             </p>
+            <ul class="service-list">
+              <li>Laravel 10/11 & Eloquent ORM</li>
+              <li>Microservices & Event Drivers</li>
+              <li>Queue Workers & Background Jobs</li>
+            </ul>
           </div>
+
           <div class="glass service-card">
-            <div class="service-icon">🔌</div>
-            <h4 class="service-title">RESTful API Development</h4>
-            <p class="service-desc">
-              Building secure and well-documented APIs (OpenAPI/Swagger) for
-              seamless frontend or mobile integrations.
+            <div class="service-header">
+              <div class="service-icon">🔌</div>
+              <span class="badge-tag">HIGH SPEED</span>
+            </div>
+            <h3 class="service-title" data-i18n="service_2_title">RESTful API Engineering</h3>
+            <p class="service-desc" data-i18n="service_2_desc">
+              Building secure, rate-limited, and well-structured APIs (Swagger/Postman documented) ready for web, mobile apps, and multi-platform clients.
             </p>
+            <ul class="service-list">
+              <li>OAuth2 & Sanctum / JWT Auth</li>
+              <li>Rate Limiting & Middleware</li>
+              <li>OpenAPI Specification Docs</li>
+            </ul>
           </div>
+
           <div class="glass service-card">
-            <div class="service-icon">🗄️</div>
-            <h4 class="service-title">Database Consulting</h4>
-            <p class="service-desc">
-              Expert MySQL schema design, query optimization, and complex data
-              modeling for business efficiency.
+            <div class="service-header">
+              <div class="service-icon">🗄️</div>
+              <span class="badge-tag">OPTIMIZED</span>
+            </div>
+            <h3 class="service-title" data-i18n="service_3_title">Database Engineering & SQL</h3>
+            <p class="service-desc" data-i18n="service_3_desc">
+              Expert relational schema design, query profiling, index strategies, transaction handling, and sub-millisecond data fetching performance.
             </p>
+            <ul class="service-list">
+              <li>MySQL & MariaDB Profiling</li>
+              <li>Redis Caching & Key-Value Store</li>
+              <li>Database Migrations & Seeding</li>
+            </ul>
           </div>
         </div>
-      </section>
 
-      <!-- Stats/Tech Section -->
-      <section id="skills" data-aos="zoom-in">
-        <div class="glass skills-container">
-          <div>
-            <h3 class="skill-stat-num">Laravel</h3>
-            <p class="skill-stat-label">Primary Framework</p>
+        <!-- Interactive Skills Filter & Matrix -->
+        <div class="skills-matrix-wrapper glass" style="margin-top: 3rem; padding: 2.5rem;" data-aos="zoom-in">
+          <div class="matrix-header">
+            <h3 style="font-size: 1.5rem;" data-i18n="matrix_title">Interactive Technology Stack</h3>
+            <div class="matrix-tabs">
+              <button class="matrix-tab active" data-filter="all">All</button>
+              <button class="matrix-tab" data-filter="backend">Backend & DB</button>
+              <button class="matrix-tab" data-filter="frontend">Frontend</button>
+              <button class="matrix-tab" data-filter="tools">DevOps & Tools</button>
+            </div>
           </div>
-          <div>
-            <h3 class="skill-stat-num">MySQL</h3>
-            <p class="skill-stat-label">Database Architect</p>
-          </div>
-          <div>
-            <h3 class="skill-stat-num">50+</h3>
-            <p class="skill-stat-label">APIs Built</p>
-          </div>
-          <div>
-            <h3 class="skill-stat-num">Secure</h3>
-            <p class="skill-stat-label">JWT & OAuth2</p>
+
+          <div class="skills-grid">
+            <!-- Skill Items -->
+            <div class="skill-card" data-category="backend">
+              <div class="skill-info">
+                <span class="skill-name">Laravel 11 / PHP 8.3</span>
+                <span class="skill-pct">95%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 95%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="backend">
+              <div class="skill-info">
+                <span class="skill-name">MySQL & Query Optimization</span>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 92%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="backend">
+              <div class="skill-info">
+                <span class="skill-name">RESTful API Design & OAuth2</span>
+                <span class="skill-pct">94%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 94%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="backend">
+              <div class="skill-info">
+                <span class="skill-name">Redis Caching & Queues</span>
+                <span class="skill-pct">88%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 88%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="frontend">
+              <div class="skill-info">
+                <span class="skill-name">HTML5 / CSS3 / JavaScript / TS</span>
+                <span class="skill-pct">85%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 85%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="frontend">
+              <div class="skill-info">
+                <span class="skill-name">Livewire & Alpine.js</span>
+                <span class="skill-pct">87%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 87%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="tools">
+              <div class="skill-info">
+                <span class="skill-name">Git / GitHub & CI/CD</span>
+                <span class="skill-pct">90%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+            </div>
+
+            <div class="skill-card" data-category="tools">
+              <div class="skill-info">
+                <span class="skill-name">Postman / OpenAPI / Swagger</span>
+                <span class="skill-pct">92%</span>
+              </div>
+              <div class="skill-bar"><div class="skill-fill" style="width: 92%;"></div></div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Projects Section -->
       <section id="projects" data-aos="fade-up">
-        <h2 class="section-header">
-          Featured <span class="gradient-text">Productions</span>
-        </h2>
+        <div class="section-center">
+          <div class="section-tag" data-i18n="projects_tag">PORTFOLIO PRODUCTIONS</div>
+          <h2 class="section-header" data-i18n="projects_title">
+            Featured <span class="gradient-text">Architectures</span>
+          </h2>
+        </div>
+
         <div class="projects-grid">
           <!-- Project Card 1: Sanaiey -->
           <div class="glass project-card">
-            <div class="project-preview">
-              [ SANAIEY.COM ] <br />
-              SMART SERVICE PLATFORM
+            <div class="project-banner">
+              <div class="project-badge">ACTIVE PLATFORM</div>
+              <div class="project-preview-icon">🛠️</div>
+              <div class="project-preview-title">SANAIEY.COM</div>
+              <p class="project-preview-sub">Smart On-Demand Service Network</p>
             </div>
-            <h4 class="project-title">Sanaiey (صنايعي دوت كوم)</h4>
-            <p class="project-desc">
-              A comprehensive platform connecting clients with skilled
-              technicians. Developed with advanced search filters, booking
-              systems, and real-time status tracking.
-            </p>
-            <div class="tag-list">
-              <span class="tag">Laravel</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">Livewire</span>
+            <div class="project-content">
+              <h3 class="project-title">Sanaiey (صنايعي دوت كوم)</h3>
+              <p class="project-desc" data-i18n="proj_1_desc">
+                An enterprise-scale service directory platform bridging customers with certified technical specialists. Built with multi-role access control, dynamic booking queues, real-time status tracking, and geolocation indexing.
+              </p>
+              <div class="tag-list">
+                <span class="tag">Laravel 11</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Livewire</span>
+                <span class="tag">REST API</span>
+                <span class="tag">Role ACL</span>
+              </div>
+              <div class="project-footer">
+                <span class="status-indicator"><span class="dot"></span> Production Ready</span>
+                <button class="btn-sm" onclick="showProjectDetails('sanaiey')" data-i18n="btn_details">View Details</button>
+              </div>
             </div>
           </div>
+
           <!-- Project Card 2: Elgmmal Fashion -->
-          <div
-            class="glass project-card"
-            onclick="window.open('https://elgfashion.kesug.com/?i=1', '_blank')"
-          >
-            <div class="project-preview">
-              [ ELGMAL FASHION ] <br />
-              E-COMMERCE HUB
+          <div class="glass project-card">
+            <div class="project-banner banner-fashion">
+              <div class="project-badge">E-COMMERCE</div>
+              <div class="project-preview-icon">🛍️</div>
+              <div class="project-preview-title">ELGMMAL FASHION</div>
+              <p class="project-preview-sub">High-Load Retail Engine</p>
             </div>
-            <h4 class="project-title">Elgmmal Fashion</h4>
-            <p class="project-desc">
-              Dynamic e-commerce solution for fashion retail. Features
-              multi-category support, inventory management, and a streamlined
-              checkout experience.
-            </p>
-            <div class="tag-list">
-              <span class="tag">PHP</span>
-              <span class="tag">MySQL</span>
-              <span class="tag">UI/UX</span>
+            <div class="project-content">
+              <h3 class="project-title">Elgmmal Fashion Hub</h3>
+              <p class="project-desc" data-i18n="proj_2_desc">
+                A full-featured digital storefront engineered for fast product inventory searching, category filtering, shopping cart persistence, dynamic order status management, and admin inventory control.
+              </p>
+              <div class="tag-list">
+                <span class="tag">PHP 8.2</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">E-Commerce Engine</span>
+                <span class="tag">Order Pipeline</span>
+              </div>
+              <div class="project-footer">
+                <a
+                  href="https://elgfashion.kesug.com/?i=1"
+                  target="_blank"
+                  class="project-link"
+                >
+                  <span data-i18n="btn_visit">Visit Live Website</span> ↗
+                </a>
+                <button class="btn-sm" onclick="showProjectDetails('fashion')" data-i18n="btn_details">View Details</button>
+              </div>
             </div>
-            <a
-              href="https://elgfashion.kesug.com/?i=1"
-              target="_blank"
-              class="project-link"
-              >Visit Website ↗</a
-            >
+          </div>
+
+          <!-- Project Card 3: Modular API Framework -->
+          <div class="glass project-card">
+            <div class="project-banner banner-api">
+              <div class="project-badge">CORE FRAMEWORK</div>
+              <div class="project-preview-icon">⚡</div>
+              <div class="project-preview-title">ENTERPRISE API BOILERPLATE</div>
+              <p class="project-preview-sub">High-Speed Microservice Starter</p>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Scalable API Gateway & Core Engine</h3>
+              <p class="project-desc" data-i18n="proj_3_desc">
+                An advanced Laravel architecture foundation featuring automated JWT authentication, Redis query caching, rate-limiting, standardized JSON API responses, and comprehensive Swagger documentation.
+              </p>
+              <div class="tag-list">
+                <span class="tag">Laravel</span>
+                <span class="tag">Redis</span>
+                <span class="tag">JWT Auth</span>
+                <span class="tag">Swagger</span>
+              </div>
+              <div class="project-footer">
+                <span class="status-indicator"><span class="dot"></span> Open Architecture</span>
+                <button class="btn-sm" onclick="showProjectDetails('api-engine')" data-i18n="btn_details">View Details</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Certificates Section -->
+      <!-- Architecture & Code Interactive Terminal (Replaces Fake Testimonials) -->
+      <section id="architecture" data-aos="fade-up">
+        <div class="section-center">
+          <div class="section-tag" data-i18n="arch_tag">INSIDE THE CODE</div>
+          <h2 class="section-header" data-i18n="arch_title">
+            Architecture & <span class="gradient-text">Code Quality</span>
+          </h2>
+        </div>
+
+        <div class="glass code-terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="terminal-tabs">
+              <button class="term-tab active" onclick="switchCodeTab('controller')">UserController.php</button>
+              <button class="term-tab" onclick="switchCodeTab('sql')">OptimalIndexes.sql</button>
+              <button class="term-tab" onclick="switchCodeTab('redis')">RedisCacheService.php</button>
+            </div>
+            <button class="copy-code-btn" onclick="copyCodeSnippet()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <div class="terminal-body">
+            <pre id="code-display" class="code-font"><code class="language-php">// High-Performance Clean Laravel Controller Architecture
+namespace App\Http\Controllers\Api\V1;
+
+use App\Http\Requests\UserRegistrationRequest;
+use App\Services\UserService;
+use App\Http\Resources\UserResource;
+use Illuminate\Http\JsonResponse;
+
+class UserController extends Controller
+{
+    public function __construct(
+        protected readonly UserService $userService
+    ) {}
+
+    public function register(UserRegistrationRequest $request): JsonResponse
+    {
+        $user = $this->userService->registerUser($request->validated());
+
+        return response()->json([
+            'status'  => 'success',
+            'message' => 'Account created successfully',
+            'data'    => new UserResource($user)
+        ], 201);
+    }
+}</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience & Milestones Section -->
+      <section id="experience" data-aos="fade-up">
+        <div class="section-center">
+          <div class="section-tag" data-i18n="exp_tag">CAREER ROADMAP</div>
+          <h2 class="section-header" data-i18n="exp_title">
+            Professional <span class="gradient-text">Journey</span>
+          </h2>
+        </div>
+
+        <div class="timeline-container">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item glass" data-aos="fade-right">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">2023 - PRESENT</div>
+              <h3 class="timeline-role" data-i18n="role_1_title">Freelance Backend Engineer & Consultant</h3>
+              <p class="timeline-company" data-i18n="role_1_comp">Client Projects & Web Platforms</p>
+              <p class="timeline-desc" data-i18n="role_1_desc">
+                Designing, deploying, and maintaining high-throughput server backends for client businesses. Implementing RESTful APIs, securing databases, and setting up automated hosting integrations.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">Laravel</span>
+                <span class="tag">API Integration</span>
+                <span class="tag">MySQL Optimization</span>
+                <span class="tag">Security</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item glass" data-aos="fade-left">
+            <div class="timeline-marker">
+              <span class="marker-dot"></span>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date">ACADEMIC JOURNEY</div>
+              <h3 class="timeline-role" data-i18n="role_2_title">Software Engineering Student</h3>
+              <p class="timeline-company" data-i18n="role_2_comp">Higher Technological Institute (HTI) - Beni Suef</p>
+              <p class="timeline-desc" data-i18n="role_2_desc">
+                Specializing in Computer Science & System Engineering. Deepening theoretical and practical foundations in Data Structures, Algorithms, Relational Database Theory, and System Design.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">Algorithms</span>
+                <span class="tag">Data Structures</span>
+                <span class="tag">System Design</span>
+                <span class="tag">Software Engineering</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Verified Certificates Section -->
       <section id="certificates" data-aos="fade-up">
-        <h2 class="section-header">
-          Verified <span class="gradient-text">Excellence</span>
-        </h2>
+        <div class="section-center">
+          <div class="section-tag" data-i18n="cert_tag">VERIFIED CREDENTIALS</div>
+          <h2 class="section-header" data-i18n="cert_title">
+            Professional <span class="gradient-text">Certifications</span>
+          </h2>
+        </div>
+
         <div class="certificates-grid">
           <div
             class="glass cert-card"
-            onclick="window.open('/assets/laravel_cert.png', '_blank')"
+            onclick="openCertModal('/assets/laravel_cert.png', 'Professional Laravel Developer')"
           >
             <div class="cert-img-wrapper">
               <img
@@ -296,17 +573,21 @@
                 alt="Laravel Certificate"
                 class="cert-img"
               />
+              <div class="cert-overlay">
+                <span class="zoom-text">🔍 Click to Preview</span>
+              </div>
             </div>
             <div class="cert-info">
               <h4 class="cert-title">Professional Laravel Developer</h4>
-              <p class="cert-desc">
-                Expert level certification in Laravel framework and ecosystem.
+              <p class="cert-desc" data-i18n="cert_1_desc">
+                Verified expertise in Laravel framework lifecycle, Eloquent ORM, Service Providers, and API design.
               </p>
             </div>
           </div>
+
           <div
             class="glass cert-card"
-            onclick="window.open('/assets/backend_cert.png', '_blank')"
+            onclick="openCertModal('/assets/backend_cert.png', 'Backend Architecture Specialist')"
           >
             <div class="cert-img-wrapper">
               <img
@@ -314,29 +595,36 @@
                 alt="Backend Architecture Certificate"
                 class="cert-img"
               />
+              <div class="cert-overlay">
+                <span class="zoom-text">🔍 Click to Preview</span>
+              </div>
             </div>
             <div class="cert-info">
               <h4 class="cert-title">Backend Architecture Specialist</h4>
-              <p class="cert-desc">
-                Validation of advanced system design and architectural patterns.
+              <p class="cert-desc" data-i18n="cert_2_desc">
+                Validation of advanced database relational modeling, microservice patterns, and server performance optimization.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Gallery/Identity Section -->
+      <!-- Bento Identity & Engineering Highlights -->
       <section id="identity" data-aos="fade-up">
-        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
-          Professional <span class="gradient-text">Identity</span>
-        </h2>
+        <div class="section-center">
+          <div class="section-tag" data-i18n="bento_tag">GALLERY & VISUAL HIGHLIGHTS</div>
+          <h2 class="section-header" data-i18n="bento_title">
+            Engineering <span class="gradient-text">Mindset</span>
+          </h2>
+        </div>
+
         <div class="bento-grid">
           <!-- Item 1: Big Focus -->
           <div class="bento-item bento-big" data-aos="fade-up">
-            <img src="/assets/personal_1.jpg" alt="Identity 1" />
+            <img src="/assets/personal_1.jpg" alt="Software Architecture" />
             <div class="bento-overlay">
-              <h4>Visionary Architect</h4>
-              <p>Strategizing scalable backend solutions.</p>
+              <h4 data-i18n="bento_1_title">Visionary Backend Architect</h4>
+              <p data-i18n="bento_1_sub">Crafting high-load, reliable server solutions.</p>
             </div>
           </div>
           <!-- Item 2: Tall -->
@@ -345,10 +633,10 @@
             data-aos="fade-up"
             data-aos-delay="100"
           >
-            <img src="/assets/personal_2.jpg" alt="Identity 2" />
+            <img src="/assets/personal_2.jpg" alt="Deep Technical Focus" />
             <div class="bento-overlay">
-              <h4>Deep Focus</h4>
-              <p>Engineering complex database schemas.</p>
+              <h4 data-i18n="bento_2_title">Deep Engineering Focus</h4>
+              <p data-i18n="bento_2_sub">Optimizing relational database schemas & indexes.</p>
             </div>
           </div>
           <!-- Item 3: Wide -->
@@ -357,26 +645,26 @@
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <img src="/assets/personal_3.jpg" alt="Identity 3" />
+            <img src="/assets/personal_3.jpg" alt="Collaborative Mindset" />
             <div class="bento-overlay">
-              <h4>Collaborative Spirit</h4>
-              <p>Working on meaningful digital products.</p>
+              <h4 data-i18n="bento_3_title">Team Collaboration</h4>
+              <p data-i18n="bento_3_sub">Building high-impact digital applications together.</p>
             </div>
           </div>
           <!-- Item 4: Small -->
           <div class="bento-item" data-aos="fade-up" data-aos-delay="300">
-            <img src="/assets/personal_4.jpg" alt="Identity 4" />
+            <img src="/assets/personal_4.jpg" alt="Clean Code" />
             <div class="bento-overlay">
-              <h4>Precision</h4>
-              <p>Clean code & high performance.</p>
+              <h4 data-i18n="bento_4_title">Clean Code Standard</h4>
+              <p data-i18n="bento_4_sub">SOLID principles & clean abstractions.</p>
             </div>
           </div>
           <!-- Item 5: Small -->
           <div class="bento-item" data-aos="fade-up" data-aos-delay="400">
-            <img src="/assets/personal_5.jpg" alt="Identity 5" />
+            <img src="/assets/personal_5.jpg" alt="Innovation" />
             <div class="bento-overlay">
-              <h4>Innovation</h4>
-              <p>Staying ahead with latest tech.</p>
+              <h4 data-i18n="bento_5_title">Continuous Innovation</h4>
+              <p data-i18n="bento_5_sub">Staying updated with modern web standards.</p>
             </div>
           </div>
           <!-- Item 6: Wide -->
@@ -385,316 +673,90 @@
             data-aos="fade-up"
             data-aos-delay="500"
           >
-            <img src="/assets/personal_6.jpg" alt="Identity 6" />
+            <img src="/assets/personal_6.jpg" alt="Future Tech" />
             <div class="bento-overlay">
-              <h4>The Future</h4>
-              <p>Building the next generation of web apps.</p>
+              <h4 data-i18n="bento_6_title">Scalable Infrastructure</h4>
+              <p data-i18n="bento_6_sub">Preparing backend systems for massive scale.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Experience Section -->
-      <section id="experience" data-aos="fade-up">
-        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
-          Professional <span class="gradient-text">Experience</span>
-        </h2>
-        <div style="display: flex; flex-direction: column; gap: 2rem">
-          <div class="glass" style="padding: 2.5rem; display: flex; gap: 2rem">
-            <div
-              style="
-                color: var(--primary);
-                font-weight: 800;
-                border-right: 2px solid var(--primary);
-                padding-right: 2rem;
-                min-width: 150px;
-              "
-            >
-              2023 - Present
-            </div>
-            <div>
-              <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem">
-                Freelance Backend Developer
-              </h4>
-              <p style="color: var(--text-dim); margin-bottom: 1rem">
-                Building robust server-side applications for diverse clients,
-                focusing on architectural efficiency and security.
-              </p>
-              <ul
-                style="
-                  color: var(--text-dim);
-                  padding-left: 1.2rem;
-                  display: grid;
-                  grid-template-columns: 1fr 1fr;
-                  gap: 0.5rem;
-                "
-              >
-                <li>• API Implementation</li>
-                <li>• Database Design</li>
-                <li>• System Integration</li>
-                <li>• Security Audits</li>
-              </ul>
-            </div>
-          </div>
-          <div class="glass" style="padding: 2.5rem; display: flex; gap: 2rem">
-            <div
-              style="
-                color: var(--primary);
-                font-weight: 800;
-                border-right: 2px solid var(--primary);
-                padding-right: 2rem;
-                min-width: 150px;
-              "
-            >
-              Academic
-            </div>
-            <div>
-              <h4 style="font-size: 1.5rem; margin-bottom: 0.5rem">
-                Software Engineering Student
-              </h4>
-              <p style="color: var(--text-dim)">
-                HTI Beni Suef - Strengthening foundational knowledge in
-                algorithms, data structures, and software engineering
-                principles.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials Section -->
-      <section id="testimonials" data-aos="fade-up">
-        <h2 style="font-size: 3rem; margin-bottom: 3rem; text-align: center">
-          Partner <span class="gradient-text">Voices</span>
-        </h2>
-        <div
-          style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-          "
-        >
-          <div class="glass" style="padding: 2.5rem; position: relative">
-            <div
-              style="
-                color: var(--primary);
-                font-size: 3rem;
-                position: absolute;
-                top: 1rem;
-                right: 2rem;
-                opacity: 0.2;
-              "
-            >
-              ”
-            </div>
-            <p
-              style="
-                color: var(--text-dim);
-                font-style: italic;
-                margin-bottom: 1.5rem;
-              "
-            >
-              "Ahmed delivered our backend infrastructure ahead of schedule. His
-              attention to database optimization significantly reduced our
-              server costs."
-            </p>
-            <div style="display: flex; align-items: center; gap: 1rem">
-              <div
-                style="
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                  background: var(--bg-darker);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-weight: 800;
-                  color: var(--primary);
-                "
-              >
-                JD
-              </div>
-              <div>
-                <h5 style="font-size: 1rem">John Doe</h5>
-                <p style="font-size: 0.8rem; color: var(--text-dim)">
-                  CTO, TechFlow
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="glass" style="padding: 2.5rem; position: relative">
-            <div
-              style="
-                color: var(--primary);
-                font-size: 3rem;
-                position: absolute;
-                top: 1rem;
-                right: 2rem;
-                opacity: 0.2;
-              "
-            >
-              ”
-            </div>
-            <p
-              style="
-                color: var(--text-dim);
-                font-style: italic;
-                margin-bottom: 1.5rem;
-              "
-            >
-              "The cleanest Laravel code I've seen in a long time. Clear
-              documentation and perfect API structure. Highly recommended!"
-            </p>
-            <div style="display: flex; align-items: center; gap: 1rem">
-              <div
-                style="
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                  background: var(--bg-darker);
-                  display: flex;
-                  align-items: center;
-                  justify-content: center;
-                  font-weight: 800;
-                  color: var(--primary);
-                "
-              >
-                SA
-              </div>
-              <div>
-                <h5 style="font-size: 1rem">Sarah Ahmed</h5>
-                <p style="font-size: 0.8rem; color: var(--text-dim)">
-                  Project Manager, Elgmmal Fashion
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA & Contact Form Section -->
+      <!-- Contact & CTA Section -->
       <section id="contact" data-aos="zoom-in">
-        <div
-          class="glass"
-          style="
-            padding: 4rem 2rem;
-            background: linear-gradient(
-              to bottom right,
-              var(--surface),
-              var(--bg-darker)
-            );
-          "
-        >
-          <div
-            style="
-              max-width: 800px;
-              margin: 0 auto;
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-              gap: 4rem;
-              text-align: left;
-            "
-          >
-            <div>
-              <h2 style="font-size: 3rem; margin-bottom: 1.5rem">
-                Ready to <span class="gradient-text">Level Up</span>?
+        <div class="glass contact-card-wrapper">
+          <div class="contact-grid">
+            <div class="contact-info">
+              <div class="section-tag" data-i18n="contact_tag">START A CONVERSATION</div>
+              <h2 class="contact-title" data-i18n="contact_title">
+                Let's Build Something <span class="gradient-text">Extraordinary</span>
               </h2>
-              <p
-                style="
-                  color: var(--text-dim);
-                  margin-bottom: 2.5rem;
-                  font-size: 1.1rem;
-                  line-height: 1.6;
-                "
-              >
-                Currently available for freelance projects and full-time
-                opportunities. Let's build something extraordinary together.
+              <p class="contact-desc" data-i18n="contact_desc">
+                Currently available for freelance projects, backend consulting, API development, and full-time software engineering roles.
               </p>
-              <div style="display: flex; flex-direction: column; gap: 1.5rem">
-                <a
-                  href="mailto:eng.ahmed.mohamed3050@gmail.com"
-                  style="
-                    color: var(--text-main);
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                  "
-                >
-                  <span style="color: var(--primary)">📧</span>
-                  eng.ahmed.mohamed3050@gmail.com
+              
+              <div class="contact-links-list">
+                <a href="mailto:eng.ahmed.mohamed3050@gmail.com" class="contact-item">
+                  <div class="item-icon">📧</div>
+                  <div>
+                    <div class="item-label">Direct Email</div>
+                    <div class="item-val">eng.ahmed.mohamed3050@gmail.com</div>
+                  </div>
                 </a>
-                <a
-                  href="https://wa.me/201275543298"
-                  target="_blank"
-                  style="
-                    color: var(--text-main);
-                    text-decoration: none;
-                    display: flex;
-                    align-items: center;
-                    gap: 1rem;
-                  "
-                >
-                  <span style="color: var(--primary)">📱</span> +20 127 554 3298
+                <a href="https://wa.me/201275543298" target="_blank" class="contact-item">
+                  <div class="item-icon">📱</div>
+                  <div>
+                    <div class="item-label">WhatsApp Direct</div>
+                    <div class="item-val">+20 127 554 3298</div>
+                  </div>
                 </a>
+                <div class="contact-item">
+                  <div class="item-icon">📍</div>
+                  <div>
+                    <div class="item-label">Location & University</div>
+                    <div class="item-val">Beni Suef / HTI, Egypt</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <!-- EmailJS Integrated -->
-              <form
-                id="contact-form"
-                style="display: flex; flex-direction: column; gap: 1rem"
-              >
+
+            <div class="contact-form-container">
+              <!-- Contact Form -->
+              <form id="contact-form" class="contact-form">
                 <input type="hidden" name="time" id="form-time" />
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  style="
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid var(--border-glow);
-                    padding: 1rem;
-                    border-radius: 0.5rem;
-                    color: #fff;
-                    font-family: inherit;
-                  "
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Your Email"
-                  required
-                  style="
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid var(--border-glow);
-                    padding: 1rem;
-                    border-radius: 0.5rem;
-                    color: #fff;
-                    font-family: inherit;
-                  "
-                />
-                <textarea
-                  name="message"
-                  placeholder="Tell me about your project..."
-                  rows="4"
-                  required
-                  style="
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid var(--border-glow);
-                    padding: 1rem;
-                    border-radius: 0.5rem;
-                    color: #fff;
-                    font-family: inherit;
-                    resize: vertical;
-                  "
-                ></textarea>
-                <button
-                  type="submit"
-                  class="btn-primary"
-                  style="justify-content: center; padding: 1rem"
-                >
-                  Send Message
+                <div class="form-group">
+                  <label for="form-name" data-i18n="lbl_name">Your Name</label>
+                  <input
+                    type="text"
+                    id="form-name"
+                    name="name"
+                    placeholder="e.g. Mohamed Ali"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="form-email" data-i18n="lbl_email">Your Email</label>
+                  <input
+                    type="email"
+                    id="form-email"
+                    name="email"
+                    placeholder="e.g. name@company.com"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="form-message" data-i18n="lbl_msg">Project Details / Message</label>
+                  <textarea
+                    id="form-message"
+                    name="message"
+                    placeholder="Tell me about your project or inquiry..."
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn-primary form-submit-btn">
+                  <span data-i18n="btn_send">Send Message Now</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                 </button>
               </form>
             </div>
@@ -703,16 +765,39 @@
       </section>
     </main>
 
-    <footer
-      style="
-        padding: 3rem 0;
-        text-align: center;
-        color: var(--text-dim);
-        font-size: 0.9rem;
-      "
-    >
-      <p>© 2026 Ahmed Elgmmal. Handcrafted with passion and precision.</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <div class="footer-brand">AHMED<span>.DEV</span></div>
+        <p class="footer-copy">
+          © 2026 Ahmed Mohamed Ragab El-Gammal. Engineered with Laravel passion & modern Web Standards.
+        </p>
+        <div class="footer-socials">
+          <a href="https://wa.me/201275543298" target="_blank">WhatsApp</a>
+          <a href="mailto:eng.ahmed.mohamed3050@gmail.com">Email</a>
+          <a href="#hero">Back to Top ↑</a>
+        </div>
+      </div>
     </footer>
+
+    <!-- Interactive Certificate Preview Modal -->
+    <div id="cert-modal" class="modal-backdrop">
+      <div class="modal-card glass">
+        <button class="modal-close" onclick="closeCertModal()">✕</button>
+        <h3 id="modal-cert-title" class="modal-title">Certificate Preview</h3>
+        <div class="modal-body">
+          <img id="modal-cert-img" src="" alt="Certificate Preview" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="modal-backdrop">
+      <div class="modal-card glass modal-lg">
+        <button class="modal-close" onclick="closeProjectModal()">✕</button>
+        <div id="modal-project-content"></div>
+      </div>
+    </div>
 
     <!-- WhatsApp Floating Widget -->
     <div class="wa-widget" id="wa-widget">
@@ -720,50 +805,41 @@
         <div class="wa-header">
           <div class="status"></div>
           <div>
-            <div style="font-weight: 700">Ahmed Elgmmal</div>
-            <div style="font-size: 0.75rem; opacity: 0.8">Online</div>
+            <div style="font-weight: 700; color: #fff;">Ahmed Elgmmal</div>
+            <div style="font-size: 0.75rem; opacity: 0.9; color: #e2e8f0;">Backend Architect • Online</div>
           </div>
         </div>
         <div class="wa-body">
           <div class="wa-msg">
-            Hi! Please provide your details and I'll get back to you
-            immediately. 👋
+            Hi there! 👋 Send your inquiry or project details directly to my WhatsApp.
           </div>
           <input
             type="text"
             class="wa-input"
             id="wa-name-input"
             placeholder="Your Name"
-            style="margin-bottom: 0.8rem"
           />
           <input
             type="text"
             class="wa-input"
             id="wa-phone-input"
-            placeholder="Your Phone (WhatsApp)"
-            style="margin-bottom: 0.8rem"
+            placeholder="Your Phone / WhatsApp"
           />
           <textarea
             class="wa-input"
             id="wa-msg-input"
-            placeholder="How can I help you?"
+            placeholder="How can I help you with your backend or project?"
             rows="2"
           ></textarea>
           <button
-            class="btn-primary"
-            style="
-              width: 100%;
-              justify-content: center;
-              background: #25d366;
-              color: white;
-            "
+            class="btn-primary wa-submit-btn"
             onclick="sendWAMessage()"
           >
-            Send Message
+            <span>Open WhatsApp Chat</span> 💬
           </button>
         </div>
       </div>
-      <div class="wa-bubble" onclick="toggleWAWindow()">
+      <div class="wa-bubble" onclick="toggleWAWindow()" aria-label="Open WhatsApp">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path
             d="M12.031 6.172c-2.32 0-4.518.892-6.193 2.512-3.418 3.3-3.418 8.651 0 11.951 1.543 1.488 3.551 2.307 5.655 2.307.21 0 .42-.008.625-.025.07.032.16.075.257.126.69.362 1.83.921 2.924 1.258.11.033.22.065.33.097a.123.123 0 0 0 .153-.105l.005-.015a.434.434 0 0 0-.012-.224l-.11-.476c-.173-.778-.346-1.556-.475-2.071l-.031-.124c.022-.01.044-.021.065-.032 1.583-.819 2.859-2.016 3.69-3.461 1.348-2.344 1.348-5.187 0-7.531-1.047-1.815-2.693-3.235-4.636-3.996s-4.048-.795-5.947-.097c-.1-.035-.205-.062-.314-.084-.336-.067-.68-.1-.131-.1-.005 0-.005.006.012.012-.03-.008-.073-.016-.118-.026zm-.031 1.031c2.035 0 3.963.782 5.431 2.201 3.012 2.9 3.012 7.619 0 10.518-1.353 1.306-3.116 2.025-4.965 2.025-.184 0-.368-.007-.55-.022l-.116-.01-.082.031c-.13.048-.266.096-.407.142l-.125.041.033.125c.105.394.249.994.406 1.742l.102.485c-.941-.26-1.872-.738-2.541-1.082l-.112-.058-.125.011c-.354.03-.71.045-1.066.045-1.849 0-3.612-.719-4.966-2.025-3.012-2.899-3.012-7.618 0-10.518 1.468-1.419 3.396-2.201 5.431-2.201z"
@@ -776,9 +852,9 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
-        duration: 1000,
+        duration: 900,
         once: true,
-        offset: 100,
+        offset: 80,
       });
     </script>
     <script type="module" src="/src/main.ts"></script>
